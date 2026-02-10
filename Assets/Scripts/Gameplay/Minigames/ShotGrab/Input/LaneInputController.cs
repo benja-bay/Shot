@@ -14,41 +14,25 @@ namespace Gameplay.Minigames.ShotGrab.Input
 
         private void Update()
         {
-            HandleTouch();
-            HandleMouse();
+            // Si hay touch activo, usar drag táctil
+            if (Touchscreen.current != null &&
+                Touchscreen.current.primaryTouch.press.isPressed)
+            {
+                HandleTouch();
+            }
+            else
+            {
+                // Si no, usar mouse follow
+                HandleMouseFollow();
+            }
         }
 
         private void HandleTouch()
         {
-            if (Touchscreen.current == null) return;
-
             var touch = Touchscreen.current.primaryTouch;
 
-            if (touch.press.isPressed)
-            {
-                Vector2 pos = touch.position.ReadValue();
-                ProcessDrag(pos);
-            }
-            else
-            {
-                isDragging = false;
-            }
-        }
+            Vector2 pos = touch.position.ReadValue();
 
-        private void HandleMouse()
-        {
-            if (!Mouse.current.leftButton.isPressed)
-            {
-                isDragging = false;
-                return;
-            }
-
-            Vector2 pos = Mouse.current.position.ReadValue();
-            ProcessDrag(pos);
-        }
-
-        private void ProcessDrag(Vector2 pos)
-        {
             if (!isDragging)
             {
                 lastPosition = pos;
@@ -57,7 +41,19 @@ namespace Gameplay.Minigames.ShotGrab.Input
 
             float deltaY = (pos.y - lastPosition.y) * dragSensitivity;
             hand.MoveVertical(deltaY);
+
             lastPosition = pos;
+        }
+
+        private void HandleMouseFollow()
+        {
+            if (Mouse.current == null) return;
+
+            Vector2 screenPos = Mouse.current.position.ReadValue();
+            Vector3 worldPos = Camera.main.ScreenToWorldPoint(screenPos);
+
+            float deltaY = worldPos.y - hand.transform.position.y;
+            hand.MoveVertical(deltaY);
         }
     }
 }
