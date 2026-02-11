@@ -17,7 +17,6 @@ namespace UI
             gameObject.SetActive(false);
         }
 
-        // Se llama desde el botón
         public void Play()
         {
             OnPlayPressed?.Invoke();

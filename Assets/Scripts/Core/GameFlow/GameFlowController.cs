@@ -29,6 +29,7 @@ namespace Core.GameFlow
 
         [Header("Systems")]
         [SerializeField] private LifeSystem lifeSystem;
+        [SerializeField] private LifeUI lifeUI;
 
         private GameState currentState;
         private int currentScore;
@@ -59,10 +60,11 @@ namespace Core.GameFlow
          * ========================= */
         private void EnterLobby()
         {
-            lifeSystem.ResetLives();
-
             currentState = GameState.Lobby;
             currentScore = 0;
+
+            lifeUI.Hide();
+            lifeSystem.ResetLives();
 
             lobby.Show();
 
@@ -76,6 +78,8 @@ namespace Core.GameFlow
                 return;
 
             lobby.Hide();
+            lifeUI.Show();
+
             EnterShotGrab();
         }
 
@@ -85,8 +89,6 @@ namespace Core.GameFlow
         private void EnterShotGrab()
         {
             currentState = GameState.ShotGrab;
-
-            lobby.Hide();
 
             shotGrabGame.gameObject.SetActive(true);
             skillbarGame.gameObject.SetActive(false);
@@ -130,7 +132,13 @@ namespace Core.GameFlow
 
         private void HandleSkillbarFinished(SkillbarResult result)
         {
+            if (currentState != GameState.Skillbar)
+                return;
+
             ApplySkillbarResult(result);
+
+            if (currentState == GameState.Lobby)
+                return;
 
             if (lifeSystem.CurrentLives <= 0)
                 return;

@@ -2153,6 +2153,7 @@ MonoBehaviour:
   skillbarGame: {fileID: 1411823407}
   delayBeforeSkillbar: 0.5
   lifeSystem: {fileID: 1502069723}
+  lifeUI: {fileID: 841644521}
 --- !u!4 &2134150571
 Transform:
   m_ObjectHideFlags: 0

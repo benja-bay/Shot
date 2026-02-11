@@ -20,6 +20,7 @@ namespace UI
         private void Awake()
         {
             lifeSystem.OnLivesChanged += UpdateUI;
+            gameObject.SetActive(false); // oculto al inicio
         }
 
         private void OnDestroy()
@@ -27,9 +28,15 @@ namespace UI
             lifeSystem.OnLivesChanged -= UpdateUI;
         }
 
-        private void Start()
+        public void Show()
         {
+            gameObject.SetActive(true);
             UpdateUI(lifeSystem.CurrentLives);
+        }
+
+        public void Hide()
+        {
+            gameObject.SetActive(false);
         }
 
         private void UpdateUI(int lifePoints)
@@ -38,17 +45,15 @@ namespace UI
                 Destroy(child.gameObject);
 
             int points = lifePoints;
-            
+
             while (points >= 2)
             {
                 CreateLiver(healthyLiver);
                 points -= 2;
             }
-            
+
             if (points == 1)
-            {
                 CreateLiver(damagedLiver);
-            }
         }
 
         private void CreateLiver(Sprite sprite)
@@ -58,4 +63,3 @@ namespace UI
         }
     }
 }
-
