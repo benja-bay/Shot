@@ -1,4 +1,5 @@
 using System.Collections;
+using Core.Systems;
 using Gameplay.Minigames.ShotGrab.Core;
 using Gameplay.Minigames.Skillbar;
 using UI;
@@ -26,6 +27,9 @@ namespace Core.GameFlow
         [Header("Transition")]
         [SerializeField] private float delayBeforeSkillbar = 1.5f;
 
+        [Header("Systems")]
+        [SerializeField] private LifeSystem lifeSystem;
+
         private GameState currentState;
         private int currentScore;
 
@@ -34,6 +38,7 @@ namespace Core.GameFlow
             shotGrabGame.OnShotGrabbed += HandleShotGrabbed;
             skillbarGame.OnSkillbarFinished += HandleSkillbarFinished;
             lobby.OnPlayPressed += HandlePlayPressed;
+            lifeSystem.OnNoLivesLeft += HandleGameOver;
         }
 
         private void Start()
@@ -46,6 +51,7 @@ namespace Core.GameFlow
             shotGrabGame.OnShotGrabbed -= HandleShotGrabbed;
             skillbarGame.OnSkillbarFinished -= HandleSkillbarFinished;
             lobby.OnPlayPressed -= HandlePlayPressed;
+            lifeSystem.OnNoLivesLeft -= HandleGameOver;
         }
 
         /* =========================
@@ -53,8 +59,9 @@ namespace Core.GameFlow
          * ========================= */
         private void EnterLobby()
         {
-            currentState = GameState.Lobby;
+            lifeSystem.ResetLives();
 
+            currentState = GameState.Lobby;
             currentScore = 0;
 
             lobby.Show();
@@ -124,6 +131,10 @@ namespace Core.GameFlow
         private void HandleSkillbarFinished(SkillbarResult result)
         {
             ApplySkillbarResult(result);
+
+            if (lifeSystem.CurrentLives <= 0)
+                return;
+
             EnterShotGrab();
         }
 
@@ -140,11 +151,21 @@ namespace Core.GameFlow
                     break;
 
                 case SkillbarResult.Fail:
-                    currentScore = Mathf.Max(0, currentScore - 1);
+                    lifeSystem.LoseLife(1);
                     break;
             }
 
-            Debug.Log($"Score actual: {currentScore}");
+            Debug.Log($"[GameFlow] Score actual: {currentScore}", this);
+        }
+
+        private void HandleGameOver()
+        {
+            Debug.Log("[GameFlow] GAME OVER", this);
+
+            StopAllCoroutines();
+            shotGrabGame.StopGame();
+
+            EnterLobby();
         }
     }
 }

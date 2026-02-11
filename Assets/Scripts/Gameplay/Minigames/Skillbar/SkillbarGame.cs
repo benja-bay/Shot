@@ -55,7 +55,7 @@ namespace Gameplay.Minigames.Skillbar
             selector.StopMoving();
 
             SkillbarResult result =
-                evaluator.Evaluate(selector.CurrentY);
+                evaluator.Evaluate(selector.CurrentX);
 
             OnSkillbarFinished?.Invoke(result);
         }

@@ -2,37 +2,45 @@
 
 namespace Gameplay.Minigames.Skillbar
 {
-    public enum SkillbarResult
-    {
-        Fail,
-        Normal,
-        Perfect
-    }
-
     public class SkillbarEvaluator : MonoBehaviour
     {
         [Header("Perfect Zone")]
         [SerializeField] private RectTransform perfectZone;
 
-        public SkillbarResult Evaluate(float selectorY)
-        {
-            float min = perfectZone.anchoredPosition.y - perfectZone.rect.height / 2f;
-            float max = perfectZone.anchoredPosition.y + perfectZone.rect.height / 2f;
+        [Header("Difficulty")]
+        [SerializeField] private float easyWidth = 200f;
+        [SerializeField] private float hardWidth = 80f;
 
-            if (selectorY >= min && selectorY <= max)
+        [Tooltip("Score necesario para llegar a la dificultad máxima")]
+        [SerializeField] private int scoreForMaxDifficulty = 20;
+
+        public SkillbarResult Evaluate(float selectorX)
+        {
+            float min =
+                perfectZone.anchoredPosition.x
+                - perfectZone.rect.width / 2f;
+
+            float max =
+                perfectZone.anchoredPosition.x
+                + perfectZone.rect.width / 2f;
+
+            if (selectorX >= min && selectorX <= max)
                 return SkillbarResult.Perfect;
 
-            return SkillbarResult.Normal;
+            return SkillbarResult.Fail;
         }
 
         public void SetupPerfectZone(int playerScore)
         {
-            float t = Mathf.Clamp01(playerScore / 100f);
-            float height = Mathf.Lerp(120f, 40f, t);
+            float t = Mathf.Clamp01(
+                (float)playerScore / scoreForMaxDifficulty
+            );
+
+            float width = Mathf.Lerp(easyWidth, hardWidth, t);
 
             perfectZone.SetSizeWithCurrentAnchors(
-                RectTransform.Axis.Vertical,
-                height
+                RectTransform.Axis.Horizontal,
+                width
             );
         }
     }

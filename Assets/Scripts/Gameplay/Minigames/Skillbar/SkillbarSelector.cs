@@ -13,12 +13,12 @@ namespace Gameplay.Minigames.Skillbar
         [SerializeField] private float maxSpeed = 400f;
 
         private float speed;
-        private float minY;
-        private float maxY;
+        private float minX;
+        private float maxX;
         private float direction = 1f;
         private bool isMoving;
 
-        public float CurrentY => selector.anchoredPosition.y;
+        public float CurrentX => selector.anchoredPosition.x;
 
         public void Setup(int playerScore)
         {
@@ -27,17 +27,18 @@ namespace Gameplay.Minigames.Skillbar
 
             Canvas.ForceUpdateCanvases();
             CalculateLimits();
-            
-            selector.anchoredPosition = new Vector2(selector.anchoredPosition.x, minY);
+
+            selector.anchoredPosition =
+                new Vector2(minX, selector.anchoredPosition.y);
         }
 
         private void CalculateLimits()
         {
-            float barHalf = bar.rect.height * 0.5f;
-            float selectorHalf = selector.rect.height * 0.5f;
+            float barHalf = bar.rect.width * 0.5f;
+            float selectorHalf = selector.rect.width * 0.5f;
 
-            minY = -barHalf + selectorHalf;
-            maxY = barHalf - selectorHalf;
+            minX = -barHalf + selectorHalf;
+            maxX = barHalf - selectorHalf;
         }
 
         public void StartMoving()
@@ -56,16 +57,16 @@ namespace Gameplay.Minigames.Skillbar
             if (!isMoving) return;
 
             Vector2 pos = selector.anchoredPosition;
-            pos.y += direction * speed * Time.deltaTime;
+            pos.x += direction * speed * Time.deltaTime;
 
-            if (pos.y >= maxY)
+            if (pos.x >= maxX)
             {
-                pos.y = maxY;
+                pos.x = maxX;
                 direction = -1f;
             }
-            else if (pos.y <= minY)
+            else if (pos.x <= minX)
             {
-                pos.y = minY;
+                pos.x = minX;
                 direction = 1f;
             }
 
