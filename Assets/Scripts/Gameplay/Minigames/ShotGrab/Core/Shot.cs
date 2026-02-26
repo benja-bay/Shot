@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using Gameplay.Minigames.ShotGrab.Data;
 
 namespace Gameplay.Minigames.ShotGrab.Core
 {
@@ -8,18 +9,47 @@ namespace Gameplay.Minigames.ShotGrab.Core
         [Header("Movement")]
         [SerializeField] private float maxLifetime = 6f;
 
+        [Header("Visual Root")]
+        [SerializeField] private Transform visualRoot;
+
         private float speed;
         private Vector2 direction;
-        public int LaneIndex { get; private set; }
-
         private float lifeTimer;
 
-        public void Init(float speed, int laneIndex, Vector2 direction)
+        private GameObject currentVisual;
+
+        public int LaneIndex { get; private set; }
+        public ShotData Data { get; private set; }
+
+        public void Init(
+            ShotData data,
+            float speed,
+            int laneIndex,
+            Vector2 direction)
         {
+            Data = data;
             this.speed = speed;
             LaneIndex = laneIndex;
             this.direction = direction.normalized;
             lifeTimer = 0f;
+
+            SetupVisual();
+        }
+
+        private void SetupVisual()
+        {
+            if (Data.visualPrefab == null)
+                return;
+
+            if (currentVisual != null)
+                Destroy(currentVisual);
+
+            currentVisual = Instantiate(
+                Data.visualPrefab,
+                visualRoot
+            );
+
+            currentVisual.transform.localPosition = Vector3.zero;
         }
 
         private void Update()

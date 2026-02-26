@@ -30,9 +30,9 @@ namespace Core.GameFlow
         [Header("Systems")]
         [SerializeField] private LifeSystem lifeSystem;
         [SerializeField] private LifeUI lifeUI;
+        [SerializeField] private ScoreSystem scoreSystem;
 
         private GameState currentState;
-        private int currentScore;
 
         private void Awake()
         {
@@ -55,16 +55,13 @@ namespace Core.GameFlow
             lifeSystem.OnNoLivesLeft -= HandleGameOver;
         }
 
-        /* =========================
-         * LOBBY
-         * ========================= */
         private void EnterLobby()
         {
             currentState = GameState.Lobby;
-            currentScore = 0;
 
             lifeUI.Hide();
             lifeSystem.ResetLives();
+            scoreSystem.ResetScore();
 
             lobby.Show();
 
@@ -83,9 +80,6 @@ namespace Core.GameFlow
             EnterShotGrab();
         }
 
-        /* =========================
-         * SHOT GRAB
-         * ========================= */
         private void EnterShotGrab()
         {
             currentState = GameState.ShotGrab;
@@ -96,17 +90,16 @@ namespace Core.GameFlow
             shotGrabGame.StartGame();
         }
 
-        private void HandleShotGrabbed()
+        private void HandleShotGrabbed(int points)
         {
             if (currentState != GameState.ShotGrab)
                 return;
 
+            scoreSystem.AddPoints(points);
+
             StartCoroutine(TransitionToSkillbar());
         }
 
-        /* =========================
-         * TRANSITION
-         * ========================= */
         private IEnumerator TransitionToSkillbar()
         {
             currentState = GameState.Transition;
@@ -117,9 +110,6 @@ namespace Core.GameFlow
             EnterSkillbar();
         }
 
-        /* =========================
-         * SKILLBAR
-         * ========================= */
         private void EnterSkillbar()
         {
             currentState = GameState.Skillbar;
@@ -127,7 +117,7 @@ namespace Core.GameFlow
             shotGrabGame.gameObject.SetActive(false);
             skillbarGame.gameObject.SetActive(true);
 
-            skillbarGame.StartGame(currentScore);
+            skillbarGame.StartGame();
         }
 
         private void HandleSkillbarFinished(SkillbarResult result)
@@ -136,9 +126,6 @@ namespace Core.GameFlow
                 return;
 
             ApplySkillbarResult(result);
-
-            if (currentState == GameState.Lobby)
-                return;
 
             if (lifeSystem.CurrentLives <= 0)
                 return;
@@ -151,11 +138,11 @@ namespace Core.GameFlow
             switch (result)
             {
                 case SkillbarResult.Perfect:
-                    currentScore += 2;
+                    scoreSystem.AddPoints(2);
                     break;
 
                 case SkillbarResult.Normal:
-                    currentScore += 1;
+                    scoreSystem.AddPoints(1);
                     break;
 
                 case SkillbarResult.Fail:
@@ -163,7 +150,7 @@ namespace Core.GameFlow
                     break;
             }
 
-            Debug.Log($"[GameFlow] Score actual: {currentScore}", this);
+            Debug.Log($"[GameFlow] Score actual: {scoreSystem.CurrentScore}", this);
         }
 
         private void HandleGameOver()

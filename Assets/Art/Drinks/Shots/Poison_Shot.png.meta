@@ -1,31 +1,31 @@
 fileFormatVersion: 2
-guid: 6e26d729c5b39a54e895d995e24295fb
+guid: 4fd4e031978e1ac40aa2c1ce09267c64
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1776384052136285114
-    second: vodka_shot_1_0
+      213: -4826368945137691697
+    second: Poison_Shot_0
   - first:
-      213: -9118048057943986731
-    second: vodka_shot_1_1
+      213: 5939362989471771677
+    second: Poison_Shot_1
   - first:
-      213: 4001974840522876156
-    second: vodka_shot_1_2
+      213: 1568820966820683156
+    second: Poison_Shot_2
   - first:
-      213: 7509131690578012932
-    second: vodka_shot_1_3
+      213: -2525986171821223414
+    second: Poison_Shot_3
   - first:
-      213: 4044139275516663359
-    second: vodka_shot_1_4
+      213: 1253355486320902086
+    second: Poison_Shot_4
   - first:
-      213: -126534623768733121
-    second: vodka_shot_1_5
+      213: 5218749902736880232
+    second: Poison_Shot_5
   - first:
-      213: -1077325387737848165
-    second: vodka_shot_1_6
+      213: 3683875133739703428
+    second: Poison_Shot_6
   - first:
-      213: 6771653582863471610
-    second: vodka_shot_1_7
+      213: -5842951200804646229
+    second: Poison_Shot_7
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -160,13 +160,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: vodka_shot_1_0
+      name: Poison_Shot_0
       rect:
         serializedVersion: 2
         x: 15
         y: 10
         width: 61
-        height: 74
+        height: 34
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -175,20 +175,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ab3904c32ebf6a810800000000000000
-      internalID: 1776384052136285114
+      spriteID: fc3571ef30b450db0800000000000000
+      internalID: -4826368945137691697
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: vodka_shot_1_1
+      name: Poison_Shot_1
       rect:
         serializedVersion: 2
         x: 95
         y: 10
         width: 61
-        height: 74
+        height: 37
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -197,20 +197,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5ddee4dc99f267180800000000000000
-      internalID: -9118048057943986731
+      spriteID: d1c219bbb2bdc6250800000000000000
+      internalID: 5939362989471771677
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: vodka_shot_1_2
+      name: Poison_Shot_2
       rect:
         serializedVersion: 2
         x: 175
         y: 10
         width: 61
-        height: 74
+        height: 46
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -219,20 +219,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: cf4aa610aeed98730800000000000000
-      internalID: 4001974840522876156
+      spriteID: 49d188b7b5295c510800000000000000
+      internalID: 1568820966820683156
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: vodka_shot_1_3
+      name: Poison_Shot_3
       rect:
         serializedVersion: 2
         x: 255
         y: 10
         width: 61
-        height: 74
+        height: 52
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -241,20 +241,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 40be78ccc7bc53860800000000000000
-      internalID: 7509131690578012932
+      spriteID: a021c01c5f4e1fcd0800000000000000
+      internalID: -2525986171821223414
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: vodka_shot_1_4
+      name: Poison_Shot_4
       rect:
         serializedVersion: 2
         x: 335
         y: 10
         width: 61
-        height: 74
+        height: 41
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -263,20 +263,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f36506b8e3baf1830800000000000000
-      internalID: 4044139275516663359
+      spriteID: 6cfb17b9c20d46110800000000000000
+      internalID: 1253355486320902086
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: vodka_shot_1_5
+      name: Poison_Shot_5
       rect:
         serializedVersion: 2
         x: 415
         y: 10
         width: 61
-        height: 74
+        height: 43
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -285,20 +285,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f3a1a7a1e657e3ef0800000000000000
-      internalID: -126534623768733121
+      spriteID: 8627c3ce269bc6840800000000000000
+      internalID: 5218749902736880232
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: vodka_shot_1_6
+      name: Poison_Shot_6
       rect:
         serializedVersion: 2
         x: 495
         y: 10
         width: 61
-        height: 74
+        height: 39
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -307,20 +307,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b96206c84429c01f0800000000000000
-      internalID: -1077325387737848165
+      spriteID: 48c13778ae0cf1330800000000000000
+      internalID: 3683875133739703428
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: vodka_shot_1_7
+      name: Poison_Shot_7
       rect:
         serializedVersion: 2
         x: 575
         y: 10
         width: 61
-        height: 74
+        height: 46
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -329,8 +329,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: af3149c4e0fb9fd50800000000000000
-      internalID: 6771653582863471610
+      spriteID: ba2d81417daa9eea0800000000000000
+      internalID: -5842951200804646229
       vertices: []
       indices: 
       edges: []
@@ -339,7 +339,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 395910679cea01146ad4b37cbe56198c
+    spriteID: 28ffd5b99f040f843ba724f9460cfbf9
     internalID: 0
     vertices: []
     indices: 
@@ -351,14 +351,14 @@ TextureImporter:
       - key: SpriteEditor.SliceSettings
         value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      vodka_shot_1_0: 1776384052136285114
-      vodka_shot_1_1: -9118048057943986731
-      vodka_shot_1_2: 4001974840522876156
-      vodka_shot_1_3: 7509131690578012932
-      vodka_shot_1_4: 4044139275516663359
-      vodka_shot_1_5: -126534623768733121
-      vodka_shot_1_6: -1077325387737848165
-      vodka_shot_1_7: 6771653582863471610
+      Poison_Shot_0: -4826368945137691697
+      Poison_Shot_1: 5939362989471771677
+      Poison_Shot_2: 1568820966820683156
+      Poison_Shot_3: -2525986171821223414
+      Poison_Shot_4: 1253355486320902086
+      Poison_Shot_5: 5218749902736880232
+      Poison_Shot_6: 3683875133739703428
+      Poison_Shot_7: -5842951200804646229
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

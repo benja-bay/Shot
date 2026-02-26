@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using Gameplay.Minigames.ShotGrab.Data;
 
 namespace Gameplay.Minigames.ShotGrab.Core
 {
@@ -8,6 +9,9 @@ namespace Gameplay.Minigames.ShotGrab.Core
         [Header("References")]
         [SerializeField] private Shot shotPrefab;
         [SerializeField] private Transform[] laneSpawnPoints;
+
+        [Header("Shot Types")]
+        [SerializeField] private ShotData[] availableShots;
 
         [Header("Settings")]
         [SerializeField] private float shotSpeed = 5f;
@@ -38,7 +42,14 @@ namespace Gameplay.Minigames.ShotGrab.Core
 
         private void SpawnShot()
         {
+            if (availableShots.Length == 0)
+                return;
+
             int lane = Random.Range(0, laneSpawnPoints.Length);
+            int shotIndex = Random.Range(0, availableShots.Length);
+
+            ShotData data = availableShots[shotIndex];
+
             Vector2 direction = spawnFromRight ? Vector2.left : Vector2.right;
 
             Shot shot = Instantiate(
@@ -47,7 +58,7 @@ namespace Gameplay.Minigames.ShotGrab.Core
                 Quaternion.identity
             );
 
-            shot.Init(shotSpeed, lane, direction);
+            shot.Init(data, shotSpeed, lane, direction);
         }
     }
 }

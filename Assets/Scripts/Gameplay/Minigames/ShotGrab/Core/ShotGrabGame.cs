@@ -5,7 +5,7 @@ namespace Gameplay.Minigames.ShotGrab.Core
 {
     public class ShotGrabGame : MonoBehaviour
     {
-        public event Action OnShotGrabbed;
+        public event Action<int> OnShotGrabbed;
 
         [SerializeField] private ShotSpawner spawner;
 
@@ -23,10 +23,11 @@ namespace Gameplay.Minigames.ShotGrab.Core
             spawner.StopSpawning();
         }
 
-        public void NotifyShotGrabbed()
+        public void NotifyShotGrabbed(int points)
         {
             if (!isRunning) return;
-            OnShotGrabbed?.Invoke();
+
+            OnShotGrabbed?.Invoke(points);
         }
     }
 }

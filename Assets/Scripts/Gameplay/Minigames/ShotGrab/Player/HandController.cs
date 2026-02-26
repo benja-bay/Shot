@@ -17,12 +17,10 @@ namespace Gameplay.Minigames.ShotGrab.Player
         [SerializeField] private ShotGrabGame shotGrabGame;
 
         private float targetY;
-        private int score;
 
         private void Awake()
         {
             targetY = transform.position.y;
-            score = 0;
         }
 
         public void MoveVertical(float deltaY)
@@ -44,10 +42,10 @@ namespace Gameplay.Minigames.ShotGrab.Player
 
             if (shot.LaneIndex == handLane)
             {
-                score++;
-                shot.Consume();
+                int points = shot.Data.points;
 
-                shotGrabGame.NotifyShotGrabbed();
+                shot.Consume();
+                shotGrabGame.NotifyShotGrabbed(points);
             }
         }
 

@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System;
+using Core.Systems;
 
 namespace Gameplay.Minigames.Skillbar
 {
@@ -11,13 +12,16 @@ namespace Gameplay.Minigames.Skillbar
         [Header("References")]
         [SerializeField] private SkillbarSelector selector;
         [SerializeField] private SkillbarEvaluator evaluator;
+        [SerializeField] private ScoreSystem scoreSystem;
 
         private bool isActive;
 
-        public void StartGame(int playerScore)
+        public void StartGame()
         {
             gameObject.SetActive(true);
             isActive = true;
+
+            int playerScore = scoreSystem.CurrentScore;
 
             selector.Setup(playerScore);
             evaluator.SetupPerfectZone(playerScore);

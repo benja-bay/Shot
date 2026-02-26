@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 17939cc60b09b244081c5f6f4d2c16e6
+guid: 364cd84361afc7f4fba721c1f38bd71f
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2113885804607067204
-    second: GreenBar_0
+      213: 8900675818925226385
+    second: YellowBar_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -50,9 +50,9 @@ TextureImporter:
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 9
-  spritePivot: {x: 0.5, y: 0.8495763}
+  spritePivot: {x: 0.5, y: 0.84887004}
   spritePixelsToUnits: 100
-  spriteBorder: {x: 298, y: 1157, z: 298, w: 168}
+  spriteBorder: {x: 225, y: 1156, z: 225, w: 167}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
@@ -96,17 +96,56 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: GreenBar_0
+      name: YellowBar_0
       rect:
         serializedVersion: 2
-        x: 297
-        y: 1156
-        width: 46
-        height: 93
+        x: 224
+        y: 1155
+        width: 192
+        height: 95
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +154,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: cbba7a08f08f9a2e0800000000000000
-      internalID: -2113885804607067204
+      spriteID: 19972ffdf7d858b70800000000000000
+      internalID: 8900675818925226385
       vertices: []
       indices: 
       edges: []
@@ -135,7 +174,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      GreenBar_0: -2113885804607067204
+      YellowBar_0: 8900675818925226385
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
