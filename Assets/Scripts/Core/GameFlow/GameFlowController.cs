@@ -1,6 +1,8 @@
 using System.Collections;
+using System.Collections.Generic;
 using Core.Systems;
 using Gameplay.Minigames.ShotGrab.Core;
+using Gameplay.Minigames.ShotGrab.Data;
 using Gameplay.Minigames.Skillbar;
 using UI;
 using UnityEngine;
@@ -24,6 +26,10 @@ namespace Core.GameFlow
         [SerializeField] private ShotGrabGame shotGrabGame;
         [SerializeField] private SkillbarGame skillbarGame;
 
+        [Header("ShotGrab Rules")]
+        [Tooltip("Cantidad de tragos que el jugador debe agarrar antes de pasar al Skillbar")]
+        [SerializeField] private int shotsPerRound = 5;
+
         [Header("Transition")]
         [SerializeField] private float delayBeforeSkillbar = 1.5f;
 
@@ -33,6 +39,9 @@ namespace Core.GameFlow
         [SerializeField] private ScoreSystem scoreSystem;
 
         private GameState currentState;
+
+        private readonly List<ShotData> grabbedShots = new();
+        private int pendingSkillbars;
 
         private void Awake()
         {
@@ -84,20 +93,25 @@ namespace Core.GameFlow
         {
             currentState = GameState.ShotGrab;
 
+            grabbedShots.Clear();
+
             shotGrabGame.gameObject.SetActive(true);
             skillbarGame.gameObject.SetActive(false);
 
             shotGrabGame.StartGame();
         }
 
-        private void HandleShotGrabbed(int points)
+        private void HandleShotGrabbed(ShotData data)
         {
             if (currentState != GameState.ShotGrab)
                 return;
 
-            scoreSystem.AddPoints(points);
+            grabbedShots.Add(data);
 
-            StartCoroutine(TransitionToSkillbar());
+            if (grabbedShots.Count >= shotsPerRound)
+            {
+                StartCoroutine(TransitionToSkillbar());
+            }
         }
 
         private IEnumerator TransitionToSkillbar()
@@ -107,6 +121,7 @@ namespace Core.GameFlow
             shotGrabGame.StopGame();
             yield return new WaitForSeconds(delayBeforeSkillbar);
 
+            pendingSkillbars = grabbedShots.Count;
             EnterSkillbar();
         }
 
@@ -127,9 +142,18 @@ namespace Core.GameFlow
 
             ApplySkillbarResult(result);
 
+            pendingSkillbars--;
+
             if (lifeSystem.CurrentLives <= 0)
                 return;
 
+            if (pendingSkillbars > 0)
+            {
+                skillbarGame.StartGame();
+                return;
+            }
+
+            grabbedShots.Clear();
             EnterShotGrab();
         }
 
@@ -161,6 +185,12 @@ namespace Core.GameFlow
             shotGrabGame.StopGame();
 
             EnterLobby();
+        }
+        
+        private void OnValidate()
+        {
+            if (shotsPerRound < 1)
+                shotsPerRound = 1;
         }
     }
 }

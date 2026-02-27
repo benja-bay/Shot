@@ -1,11 +1,12 @@
 ﻿using System;
 using UnityEngine;
+using Gameplay.Minigames.ShotGrab.Data;
 
 namespace Gameplay.Minigames.ShotGrab.Core
 {
     public class ShotGrabGame : MonoBehaviour
     {
-        public event Action<int> OnShotGrabbed;
+        public event Action<ShotData> OnShotGrabbed;
 
         [SerializeField] private ShotSpawner spawner;
 
@@ -23,11 +24,11 @@ namespace Gameplay.Minigames.ShotGrab.Core
             spawner.StopSpawning();
         }
 
-        public void NotifyShotGrabbed(int points)
+        public void NotifyShotGrabbed(ShotData data)
         {
             if (!isRunning) return;
 
-            OnShotGrabbed?.Invoke(points);
+            OnShotGrabbed?.Invoke(data);
         }
     }
 }

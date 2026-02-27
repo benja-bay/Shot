@@ -42,10 +42,8 @@ namespace Gameplay.Minigames.ShotGrab.Player
 
             if (shot.LaneIndex == handLane)
             {
-                int points = shot.Data.points;
-
                 shot.Consume();
-                shotGrabGame.NotifyShotGrabbed(points);
+                shotGrabGame.NotifyShotGrabbed(shot.Data);
             }
         }
 
