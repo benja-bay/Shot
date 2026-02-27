@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 3976620537413383603}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.344, y: 0.16863996, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -117,7 +117,7 @@ Transform:
   m_GameObject: {fileID: 6439444459274327266}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.33970165, y: 0.21574932, z: 0}
+  m_LocalPosition: {x: 0, y: 0.041, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -192,7 +192,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6492875842233932684}
   m_Layer: 0
-  m_Name: ExpiredWinePrefab
+  m_Name: ExpiredWine_Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -207,7 +207,7 @@ Transform:
   m_GameObject: {fileID: 8654109149088602046}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.68762, y: -0.95864, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

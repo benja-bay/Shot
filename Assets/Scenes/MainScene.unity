@@ -2331,7 +2331,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9418a2747a9a4edeba807b77aa7c4e8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Gameplay.Minigames.ShotGrab.Core.ShotSpawner
-  shotPrefab: {fileID: 120012462128441816, guid: dd03e5e26d3820e44b7ceb6f41b7ffbf, type: 3}
+  shotPrefab: {fileID: 453776509111551895, guid: c11f33a4617ea9445bb01bc80300397d, type: 3}
   laneSpawnPoints:
   - {fileID: 1591846510}
   - {fileID: 1438627081}
